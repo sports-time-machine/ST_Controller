@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<ClCompile Include="src\ofApp.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\main.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\GameRecord.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\GoalState.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\HttpPostThread.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\STClient.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\STOperatorInterface.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\STSoundPlayer.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\State.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\UDPReceiverThread.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\main.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\CalibratingState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\EmptyStates.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\ErrorState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\InitedState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\LoadingState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\PlayingBackState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\PreRunningState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\ReadyState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\RunnigState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\RunningState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\SavingState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\WaitingPlaybackState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\states\WaitingRunState.cpp">
+			<Filter>src\states</Filter>
+		</ClCompile>
+		<ClCompile Include="src\testApp.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.cpp">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxPoco\src\ofxXmlPoco.cpp">
+			<Filter>addons\ofxPoco\src</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src">
+			<UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\PSL">
+			<UniqueIdentifier>{94EDD5EE--431-B-4F-74-B-BFC-5B564615B2F6}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="src\states">
+			<UniqueIdentifier>{B882A3F5--990-D-4A-28-A-CB1-630F1009DF42}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons">
+			<UniqueIdentifier>{9FB9DF0A--550-0-4B-43-A-FA2-5A408E70E4DC}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxNetwork">
+			<UniqueIdentifier>{5BBCBC2F--FF1-A-4C-64-A-255-D727019A4F5B}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxNetwork\src">
+			<UniqueIdentifier>{950693F2--44D-3-4A-51-9-D45-4C8C74077D6E}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxPoco">
+			<UniqueIdentifier>{9B5A9F47--64B-0-49-57-A-EAB-1D223E36D08B}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxPoco\src">
+			<UniqueIdentifier>{A54178E3--70F-3-4C-7B-9-B09-3EE09105815C}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="src\ofApp.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\GameRecord.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\GoalState.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\HttpPostThread.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\PSL.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\PSLlib.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\binder.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\bytecode.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\code.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\container.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\environment.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\memory.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\parser.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\pstring.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\scope.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\tokenizer.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\variable.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\PSL\vdata.h">
+			<Filter>src\PSL</Filter>
+		</ClInclude>
+		<ClInclude Include="src\STClient.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\STOperatorInterface.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\STSoundPlayer.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\State.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\UDPReceiverThread.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\CalibratingState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\EmptyStates.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\ErrorState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\InitedState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\LoadingState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\PlayingBackState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\PreRunningState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\ReadyState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\RunningState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\SavingState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\WaitingPlaybackState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\WaitingRunState.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\states\states.h">
+			<Filter>src\states</Filter>
+		</ClInclude>
+		<ClInclude Include="src\testApp.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPSettings.h">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPSettings.h">
+			<Filter>addons\ofxNetwork\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxPoco\src\ofxXmlPoco.h">
+			<Filter>addons\ofxPoco\src</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<ResourceCompile Include="icon.rc" />
+	</ItemGroup>
+</Project>
