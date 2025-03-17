@@ -48,7 +48,7 @@ static PSL::variable get_date_ymd()
 
 void testApp::init_psl()
 {
-	// ƒXƒNƒŠƒvƒgŠÂ‹«‚Ì€”õ
+	// ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½Â‹ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	//if (psl) delete psl;
 
 	//psl = new PSLVM();
@@ -75,12 +75,12 @@ void testApp::init_psl()
 void testApp::setup(){
 	idle_frame = 0;
 
-	// ƒXƒNƒŠƒvƒgŠÂ‹«‚Ì€”õ
+	// ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½Â‹ï¿½ï¿½Ìï¿½ï¿½ï¿½
 	//psl = NULL;
 	psl = new PSLVM();
 	init_psl();
 
-	// ó‘ÔƒNƒ‰ƒX‚Ì€”õ
+	// ï¿½ï¿½ÔƒNï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½
 	current_state = NULL;
 	next_state = new InitedState(this);
 	new CalibratingState(this);
@@ -97,10 +97,10 @@ void testApp::setup(){
 	new SaveEndState(this);
 	new ErrorState(this);
 
-	// ƒTƒEƒ“ƒh‘fŞ‚Ì€”õ
+	// ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½fï¿½Ş‚Ìï¿½ï¿½ï¿½
 	setup_sounds();
 
-	// ’ÊMŠÖŒW‚ÌƒNƒ‰ƒX‚Ì€”õ
+	// ï¿½ÊMï¿½ÖŒWï¿½ÌƒNï¿½ï¿½ï¿½Xï¿½Ìï¿½ï¿½ï¿½
 	variable str;
 	str = psl->get("client_port");			int port = str.toInt();
 	str = psl->get("broadcast_address");	std::string address = str;
@@ -109,10 +109,10 @@ void testApp::setup(){
 	printf_s("sender.Create() => %d\n", sender.Create());
 	sender.SetEnableBroadcast(true);
 	printf_s("sender.Connect(%s, %d) => %d\n", addr, port, sender.Connect(addr, port));
-	// UDPóMƒXƒŒƒbƒh
+	// UDPï¿½ï¿½Mï¿½Xï¿½ï¿½ï¿½bï¿½h
 	str = psl->get("server_port");	port = str.toInt();
 	receiver_t.setup(this, port);
-	receiver_t.startThread(true, false);
+	receiver_t.startThread();
 
 	opInterface = NULL;
 #ifdef INSPECT_INTERVAL
@@ -121,7 +121,7 @@ void testApp::setup(){
 	ptr = interval_hist;
 #endif
 
-	// ‰æ–Ê‚âOFŠÖŒW‚Ì€”õ
+	// ï¿½ï¿½Ê‚ï¿½OFï¿½ÖŒWï¿½Ìï¿½ï¿½ï¿½
 	ofSetFrameRate(30);
 	current_game = NULL;
 }
@@ -144,7 +144,7 @@ void testApp::update(){
 	}
 	
 
-	// ƒtƒŒ[ƒ€“¯ŠúM†
+	// ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mï¿½ï¿½
 	if (frame_sig.enabled)
 	{
 		static char buf[1024];
@@ -185,7 +185,7 @@ void testApp::update(){
 		this->msg.unlock();
 	}
 
-	// ó‘Ô‚ğ‘JˆÚ‚·‚éê‡‚Í‘O‚ÌŒãn––‚ÆŸ‚Ì€”õ‚ğ‚·‚éB
+	// ï¿½ï¿½Ô‚ï¿½Jï¿½Ú‚ï¿½ï¿½ï¿½ê‡ï¿½Í‘Oï¿½ÌŒï¿½nï¿½ï¿½ï¿½Æï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 	if (next_state != current_state) {
 		if (current_state != NULL) current_state->leaveState();
 		if (next_state != NULL) next_state->enterState();
@@ -194,10 +194,10 @@ void testApp::update(){
 			opInterface->state_changed(current_state->name());
 	}
 
-	// Œ»İ‚Ìó‘Ô‚Å‚â‚é‚×‚«‚±‚Æ‚ğ‚â‚éBiŸ‚Ìó‘Ô‚ª•Ô‚éj
+	// ï¿½ï¿½ï¿½İ‚Ìï¿½Ô‚Å‚ï¿½ï¿½×‚ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½Bï¿½iï¿½ï¿½ï¿½Ìï¿½Ô‚ï¿½ï¿½Ô‚ï¿½j
 	if (current_state != NULL) {
 		State *next = current_state->updateState();
-		// ƒXƒNƒŠƒvƒg‚Ì’†‚Å‚Ìó‘Ô‘JˆÚ‚ğ—Dæ‚³‚¹‚é‚½‚ß‚ÉˆÈ‰º‚ÌğŒ‚ğ‚Â‚¯‚éB
+		// ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½Ì’ï¿½ï¿½Å‚Ìï¿½Ô‘Jï¿½Ú‚ï¿½Dï¿½æ‚³ï¿½ï¿½ï¿½é‚½ï¿½ß‚ÉˆÈ‰ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½B
 		if (next_state == current_state) next_state = next;
 	}
 }
@@ -209,7 +209,7 @@ void testApp::draw(){
 	ofBackground(0);
 
 	y = 30;
-	// ƒCƒ“ƒXƒgƒ‰ƒNƒ^[UI‚ÆƒNƒ‰ƒCƒAƒ“ƒg‹@‚Ìó‘Ô
+	// ï¿½Cï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[UIï¿½ÆƒNï¿½ï¿½ï¿½Cï¿½Aï¿½ï¿½ï¿½gï¿½@ï¿½Ìï¿½ï¿½
 	ofSetColor(255, 255, 0);
 	ofDrawBitmapString("* Instractor UI *", 220, y);
 	y += 15;
@@ -237,7 +237,7 @@ void testApp::draw(){
 	}
 	y += 10;
 
-	// Œ»İ‚ÌƒRƒ“ƒgƒ[ƒ‰[‚ÌƒXƒe[ƒg
+	// ï¿½ï¿½ï¿½İ‚ÌƒRï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½ÌƒXï¿½eï¿½[ï¿½g
 	ofSetColor(255, 255, 0);
 	ofDrawBitmapString("* CONTROLLER STATE *", 20, y);
 	y += 15;
@@ -248,7 +248,7 @@ void testApp::draw(){
 		ofDrawBitmapString("none", 20, y);
 	y += 15;
 
-	// ƒtƒŒ[ƒ€“¯ŠúM†‚Ìó‘Ô
+	// ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mï¿½ï¿½ï¿½Ìï¿½ï¿½
 	ofSetColor(255);
 	sprintf(buf, "frame-index:  %4d (%s)", frame_sig.index, frame_sig.enabled?"true":"false");
 	ofDrawBitmapString(buf, 20, y+=15);
@@ -258,7 +258,7 @@ void testApp::draw(){
 	ofDrawBitmapString(buf, 20, y+=15);
 
 
-	// ƒtƒŒ[ƒ€ƒŒ[ƒg‚ÌŒXŒü
+	// ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½gï¿½ÌŒXï¿½ï¿½
 #ifdef INSPECT_INTERVAL
 	y = 300;
 	ofColor(128, 128, 128);
@@ -310,10 +310,10 @@ void testApp::exit(){
 }
 
 /***************************************************************
-	ƒXƒNƒŠƒvƒg‚©‚ç‚àŒÄ‚Ño‚¹‚éƒƒ\ƒbƒh
+	ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½éƒï¿½\ï¿½bï¿½h
 ***************************************************************/
 //--------------------------------------------------------------
-// ó‘Ô‚ğ‘JˆÚ‚³‚¹‚éB
+// ï¿½ï¿½Ô‚ï¿½Jï¿½Ú‚ï¿½ï¿½ï¿½ï¿½ï¿½B
 int testApp::change_state(const char * state_name){
 	printf_s("change state: %s\n", state_name);
 	testApp *me = (testApp*)ofGetAppPtr();
@@ -323,7 +323,7 @@ int testApp::change_state(const char * state_name){
 }
 
 //--------------------------------------------------------------
-// ƒTƒEƒ“ƒh‚ğ–Â‚ç‚·Eƒ‹[ƒvÄ¶‚·‚é
+// ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½ï¿½Â‚ç‚·ï¿½Eï¿½ï¿½ï¿½[ï¿½vï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½
 int testApp::play_sound_vol(const char * name, float vol){
 	return play_sound(name, false, vol, 0.0f);
 }
@@ -349,7 +349,7 @@ int testApp::play_sound(const char * name, int loop, float vol, float pan){
 
 	return 0;
 }
-// ƒTƒEƒ“ƒh‚ğƒtƒF[ƒh‚³‚¹‚éB
+// ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½ï¿½ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 int testApp::fadein_sound(const char *name, float target_volume, int frames, int loop)
 {
 //#	printf_s("fade in ///// %s\n", name);
@@ -378,7 +378,7 @@ int testApp::fade_sound(const char *name, float target_volume, int frames, float
 	return 0;
 }
 
-// ƒTƒEƒ“ƒh‚ğ’â~‚·‚é
+// ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½
 int testApp::stop_sound(const char * name){
 	testApp *me = (testApp*)ofGetAppPtr();
 	map<std::string, STSoundPlayer*>::iterator it = me->sounds.find(name);
@@ -394,7 +394,7 @@ int testApp::stop_sound(const char * name){
 
 
 //--------------------------------------------------------------
-// ‰æ–Ê‚Ìƒuƒ‰ƒbƒNƒAƒEƒg
+// ï¿½ï¿½Ê‚Ìƒuï¿½ï¿½ï¿½bï¿½Nï¿½Aï¿½Eï¿½g
 void testApp::api_blackout(int frames)
 {
 	blackout.enabled = true;
@@ -420,7 +420,7 @@ void testApp::disable_frame_signal()
 
 
 //--------------------------------------------------------------
-// ‘SƒNƒ‰ƒCƒAƒ“ƒg‹@‚ÉƒƒbƒZ[ƒW‚ğƒuƒ[ƒhƒLƒƒƒXƒg‚·‚éB
+// ï¿½Sï¿½Nï¿½ï¿½ï¿½Cï¿½Aï¿½ï¿½ï¿½gï¿½@ï¿½Éƒï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½ï¿½uï¿½ï¿½ï¿½[ï¿½hï¿½Lï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½B
 int testApp::shout(const char * message){
 	char message_buf[1024];
 	sprintf_s(message_buf, "%s\n", message);
@@ -444,7 +444,7 @@ int testApp::shout(const char * message){
 
 
 /***************************************************************
-	State‚Ì’†‚©‚çå‚ÉŒÄ‚Î‚ê‚éƒƒ\ƒbƒh
+	Stateï¿½Ì’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉŒÄ‚Î‚ï¿½éƒï¿½\ï¿½bï¿½h
 ***************************************************************/
 //--------------------------------------------------------------
 bool testApp::allPearConnected() const
@@ -452,14 +452,14 @@ bool testApp::allPearConnected() const
 	const int expected_number_of_clients = PSLv(psl->get("expected_number_of_clients"));
 	const bool need_instructor_interface = PSLv(psl->get("need_instructor_interface"));
 
-	// ƒNƒ‰ƒCƒAƒ“ƒg‚ªŠú‘Ò‚·‚é‘ä”Ú‘±‚·‚é‚Ü‚ÅAÚ‘±—v‹‚ğ‚·‚é
+	// ï¿½Nï¿½ï¿½ï¿½Cï¿½Aï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Ò‚ï¿½ï¿½ï¿½ä”ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ÅAï¿½Ú‘ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (clients.size() < expected_number_of_clients)
 		return false;
-	// ƒCƒ“ƒXƒgƒ‰ƒNƒ^[UI‚ª•K—v‚ÅAÚ‘±‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎAÚ‘±—v‹‚ğ‚·‚é
+	// ï¿½Cï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[UIï¿½ï¿½ï¿½Kï¿½vï¿½ÅAï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ÎAï¿½Ú‘ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (need_instructor_interface && opInterface==NULL)
 		return false;
 
-	// ‚±‚êˆÈã‚ÌÚ‘±—v‹‚È‚µ
+	// ï¿½ï¿½ï¿½ï¿½Èï¿½ÌÚ‘ï¿½ï¿½vï¿½ï¿½ï¿½È‚ï¿½
 	return true;
 }
 
@@ -477,7 +477,7 @@ bool testApp::allClientIs(const std::string& status) const
 }
 
 /***************************************************************
-	“à•”“I‚Ég‚í‚ê‚éƒƒ\ƒbƒh
+	ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½Égï¿½ï¿½ï¿½éƒï¿½\ï¿½bï¿½h
 ***************************************************************/
 //--------------------------------------------------------------
 STClient* testApp::getClient(std::string address){
@@ -492,8 +492,8 @@ void testApp::loadGameRecord(GameRecord *record)
 		return;
 	}
 
-	// ŒÄ‚Ño‚µ‘¤‚Å‚ÍƒIƒuƒWƒFƒNƒg‚Ìˆ—‚Í‚µ‚È‚¢‚Ì‚ÅA
-	// testApp‘¤‚Å‰ğ•ú‚·‚é‚±‚ÆB
+	// ï¿½Ä‚Ñoï¿½ï¿½ï¿½ï¿½ï¿½Å‚ÍƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½È‚ï¿½ï¿½Ì‚ÅA
+	// testAppï¿½ï¿½ï¿½Å‰ï¿½ï¿½ï¿½ï¿½ï¿½é‚±ï¿½ÆB
 	current_game = record;
 
 	std::vector<std::string> messages;
@@ -511,7 +511,7 @@ bool testApp::saveGameRecord()
 {
 	if (current_game != NULL) {
 		if (! current_game->insert_to_database()) {
-			// DB‚ÉŠi”[‚Å‚«‚È‚©‚Á‚½ê‡B
+			// DBï¿½ÉŠiï¿½[ï¿½Å‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½B
 			while (current_game->post_t.done==false)
 			{
 				Sleep(1);
@@ -544,13 +544,13 @@ void testApp::dispatchMessage(char *argv[], int argc, std::string from){
 
 	if (strcmp(argv[0], "PONG") == 0) {
 
-		// PING‚Ö‚Ì‰“š‚Ìê‡
+		// PINGï¿½Ö‚Ì‰ï¿½ï¿½ï¿½ï¿½Ìê‡
 		if (argc >= 3 && strcmp(argv[1], "INSTRUCTOR_UI") == 0) {
-			// ƒIƒyƒŒ[ƒ^ƒCƒ“ƒ^ƒtƒF[ƒX‚©‚ç‚ÌPONG INSTRUCTOR_UI <port>
+			// ï¿½Iï¿½yï¿½ï¿½ï¿½[ï¿½^ï¿½Cï¿½ï¿½ï¿½^ï¿½tï¿½Fï¿½[ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½PONG INSTRUCTOR_UI <port>
 			if (opInterface) delete opInterface;
 			opInterface = new STOperatorInterface(this, from, atoi(argv[2]));
 		} else {
-			// ‚»‚Ì‘¼‚©‚ç‚ÌPONG
+			// ï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PONG
 			client = getClient(from);
 			if (argc < 4) {
 				printf_s("ERROR: Invalid PONG response: argc=%d from %s\n", argc, from.c_str());
@@ -568,7 +568,7 @@ void testApp::dispatchMessage(char *argv[], int argc, std::string from){
 
 	} else if (opInterface != NULL && opInterface->address == from) {
 
-		//	ƒCƒ“ƒXƒgƒ‰ƒNƒ^[UI‚©‚ç‚ÌƒƒbƒZ[ƒW‚Ìê‡AUI‚Éˆ—‚ğU‚éB
+		//	ï¿½Cï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[UIï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½Ìê‡ï¿½AUIï¿½Éï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½B
 		opInterface->message(argv, argc);
 
 	} else if (client = getClient(from)) {
@@ -597,7 +597,7 @@ void testApp::dispatchMessage(char *argv[], int argc, std::string from){
 
 	} else {
 
-		// ƒXƒNƒŠƒvƒg‚ÉU‚é
+		// ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½ÉUï¿½ï¿½
 		//on_message_in_psl(current_state->name().c_str(), from.c_str(), argv[0]);
 
 	}
@@ -605,11 +605,11 @@ void testApp::dispatchMessage(char *argv[], int argc, std::string from){
 }	
 
 /***************************************************************
-	ƒTƒEƒ“ƒhŠÖ˜A
+	ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½Ö˜A
 ***************************************************************/
 void testApp::setup_sounds()
 {
-	// ‚à‚µ‚·‚Å‚É“Ç‚İ‚Ü‚ê‚Ä‚¢‚é‚à‚Ì‚ª‚ ‚ê‚Î‚·‚×‚Ä”jŠü‚·‚éB
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å‚É“Ç‚İï¿½ï¿½Ü‚ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ï¿½Î‚ï¿½ï¿½×‚Ä”jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 	map<std::string, STSoundPlayer*>::iterator it = sounds.begin();
 	while (it != sounds.end()) {
 		delete it->second;
@@ -617,7 +617,7 @@ void testApp::setup_sounds()
 	}
 
 
-	// ƒXƒNƒŠƒvƒg‚É‘‚©‚ê‚½ƒTƒEƒ“ƒhƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ŞB
+	// ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½Éï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ŞB
 	variable v_sound_dir = psl->get("sound_dir");
 	std::string sound_dir = v_sound_dir;
 	variable sound_table = psl->get("sounds");

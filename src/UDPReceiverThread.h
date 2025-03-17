@@ -1,4 +1,3 @@
-
 #ifndef _UDP_RECEIVER_THREAD_H_
 #define _UDP_RECEIVER_THREAD_H_
 
@@ -7,26 +6,25 @@
 
 #define UDP_PACKET_BUF_SIZE	(1024 * 10)
 
-extern char* tokenize(char *buf, char **argv, int &argc);
+extern char* tokenize(char* buf, char** argv, int& argc);
 
 
 class testApp;
 
-class UDPReceiverThread : public ofThread {
-	testApp *app;
-	int port;
-	char buf[UDP_PACKET_BUF_SIZE];
-	char address[1024];
-	ofxUDPManager receiver;
+class UDPReceiverThread : public ofThread
+{
+    testApp* app;
+    int port;
+    char buf[UDP_PACKET_BUF_SIZE];
+    std::string address;
+    ofxUDPManager receiver;
 
 public:
+    UDPReceiverThread();
 
-	UDPReceiverThread();
+    void setup(testApp* app, int port);
 
-	void setup(testApp *app, int port);
-	
-	void threadedFunction();
+    void threadedFunction();
 };
 
 #endif
-
