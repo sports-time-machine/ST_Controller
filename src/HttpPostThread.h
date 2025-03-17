@@ -19,7 +19,7 @@ public:
 	HttpPostThread();
 	~HttpPostThread();
 
-	int post(std::string url, std::string body);
+	int post(const std::string& url, const std::string& body);
 
 	void threadedFunction();
 
