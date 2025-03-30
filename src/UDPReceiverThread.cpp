@@ -19,7 +19,8 @@ void UDPReceiverThread::threadedFunction()
     while (isThreadRunning())
     {
         int len = receiver.Receive(buf, UDP_PACKET_BUF_SIZE);
-        receiver.GetRemoteAddr(address, port);
+        int remotePort;
+        receiver.GetRemoteAddr(address, remotePort);
 
         // chomp
         while (len > 0 && isspace(buf[len - 1]))
