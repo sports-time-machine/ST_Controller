@@ -2,7 +2,6 @@
 #include "Poco/Net/HTTPClientSession.h"
 #include "Poco/Net/HTTPRequest.h"
 #include "Poco/Net/HTTPResponse.h"
-#include "Poco/Net/HTMLForm.h"
 #include "Poco/URI.h"
 
 #include <istream>
@@ -43,21 +42,15 @@ void HttpPostThread::threadedFunction()
         HTTPClientSession session(uri.getHost(), uri.getPort());
         HTTPRequest req(HTTPRequest::HTTP_POST, path, HTTPMessage::HTTP_1_1);
 
-#if 0
-		HTTPBasicCredentials auth;
-		auth.setUsername(username);
-		auth.setPassword(password);
-		auth.authenticate(req);
-#endif
+        // JSONコンテンツタイプを設定
+        req.setContentType("application/json");
 
-        HTMLForm pocoForm;
-        // create the form data to send
-        pocoForm.setEncoding(HTMLForm::ENCODING_URL);
+        // コンテンツ長を設定
+        req.setContentLength(postbody.length());
 
-        pocoForm.set(std::string("json"), postbody);
-
-        pocoForm.prepareSubmit(req);
-        pocoForm.write(session.sendRequest(req));
+        // リクエストボディを直接書き込む
+        std::ostream& os = session.sendRequest(req);
+        os << postbody;
 
         static std::string response;
         HTTPResponse res;
@@ -70,19 +63,10 @@ void HttpPostThread::threadedFunction()
         printf_s("DB RESPONSE:%d | %s\n", res_status, response.c_str());
 
         response_body = response;
-
-        /*
-        if (res_status != 200) {
-            error_content = "O.K.";
-        } else {
-            error_contents = response_body;
-        }
-        */
     }
     catch (Exception& exc)
     {
         std::cerr << "HttpPost error--\n";
-
         std::cerr << exc.displayText() << std::endl;
     }
 
